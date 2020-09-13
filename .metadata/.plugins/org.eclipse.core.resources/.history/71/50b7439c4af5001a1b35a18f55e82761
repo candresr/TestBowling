@@ -1,0 +1,14 @@
+package com.test.bowling.bowling.service;
+
+import org.apache.log4j.Logger;
+
+import com.test.bowling.bowling.dto.RequestCalculatorDTO;
+
+public class CalculatorGameService {
+	
+	final Logger logger = Logger.getLogger(this.getClass());
+	
+	public void getScored(RequestCalculatorDTO dto) {
+		
+	}
+}

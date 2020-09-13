@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;com.test.bowling.bowling.controller.CalculatorGame&apos; to &apos;CalculatorGameController&apos;&#x0A;- Original project: &apos;bowling&apos;&#x0A;- Original element: &apos;com.test.bowling.bowling.controller.CalculatorGame&apos;&#x0A;- Renamed element: &apos;com.test.bowling.bowling.controller.CalculatorGameController&apos;&#x0A;- Update references to refactored element&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;CalculatorGame&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.test.bowling.bowling.controller{CalculatorGame.java[CalculatorGame" matchStrategy="1" name="CalculatorGameController" qualified="false" references="true" similarDeclarations="false" stamp="1599947331796" textual="false" version="1.0"/>
+</session>
