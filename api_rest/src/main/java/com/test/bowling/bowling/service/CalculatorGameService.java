@@ -14,22 +14,43 @@ public class CalculatorGameService {
     private int roll = 0;
     private int[] rolls = new int[21];
 	
-	
 	public ResponseGenericDTO getScored(RequestCalculatorDTO dto) {
-
+		
 		try {
 			String[] points = dto.getGame();
-			for(String pin : points) {
-				converGame(pin);
-			}
-			return new ResponseGenericDTO(calculateScore(),true,"OK",HttpStatus.OK);
+			int scored = calculateScore(points);
+			return new ResponseGenericDTO(scored,true,"OK",HttpStatus.OK);
 		} catch (Exception e) {
 			logger.error("getScored ERROR: " + e.getMessage());
 			return new ResponseGenericDTO(-0,false,e.getMessage(),HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}
 	
+    public int calculateScore(String[] points) {
+        int total = 0;
+        int inc = 0;
+
+		for(String pin : points) {
+			converGame(pin);
+		}
+
+        for (int j = 0; j < 10; j++) {
+            if (calculateStrike(inc)) { 
+            	total += 10 + rolls[inc+1] + rolls[inc+2];
+            	inc ++;
+            } else if (calculateSpare(inc)) { 
+            	total += 10 + rolls[inc+2];
+            	inc += 2;
+            } else {
+                total += rolls[inc] + rolls[inc+1];
+                inc += 2;
+            }
+        }
+        return total;
+    }
+    
 	public void converGame(String game) {
+
 		for (int i=0; i<game.length(); i++) {
 			switch (game.charAt(i)) {
 			case 'X':
@@ -48,24 +69,6 @@ public class CalculatorGameService {
 			}
 		}
 	}
-	
-    public int calculateScore() {
-        int total = 0;
-        int inc = 0;
-        for (int frame = 0; frame < 10; frame++) {
-            if (calculateStrike(inc)) { 
-            	total += 10 + rolls[inc+1] + rolls[inc+2];
-            	inc ++;
-            } else if (calculateSpare(inc)) { 
-            	total += 10 + rolls[inc+2];
-            	inc += 2;
-            } else {
-                total += rolls[inc] + rolls[inc+1];
-                inc += 2;
-            }
-        }
-        return total;
-    }
     
     private boolean calculateStrike(int inc) {
         return rolls[inc] == 10;
