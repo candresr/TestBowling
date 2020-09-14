@@ -1,0 +1,38 @@
+<form  #scoredForm="ngForm">
+<table id="AutoNumber1">
+  <thead>
+  <tr>
+    <td ><b>Frame</b></td>
+    <td ><b>1</b></td>
+    <td ><b>2</b></td>
+    <td ><b>3</b></td>
+    <td ><b>4</b></td>
+    <td ><b>5</b></td>
+    <td ><b>6</b></td>
+    <td ><b>7</b></td>
+    <td ><b>8</b></td>
+    <td ><b>9</b></td>
+    <td ><b>10</b></td>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td bgcolor="#003399"><font color="#FFFFFF"><b>Score</b></font></td>
+    <td bgcolor="#99CCFF" ><input type=text maxlength=1 size=1 [(ngModel)]="game.shot1a" name="shot1a"> <input type=text maxlength=1 size=1 [(ngModel)]="game.shot1b" name="shot1b"></td>
+    <td bgcolor="#99CCFF" ><input type=text maxlength=1 size=1 [(ngModel)]="game.shot2a" name="shot2a"> <input type=text maxlength=1 size=1 [(ngModel)]="game.shot2b" name="shot2b"></td>
+    <td bgcolor="#99CCFF" ><input type=text maxlength=1 size=1 [(ngModel)]="game.shot3a" name="shot3a"> <input type=text maxlength=1 size=1 [(ngModel)]="game.shot3b" name="shot3b"></td>
+    <td bgcolor="#99CCFF" ><input type=text maxlength=1 size=1 [(ngModel)]="game.shot4a" name="shot4a"> <input type=text maxlength=1 size=1 [(ngModel)]="game.shot4b" name="shot4b"></td>
+    <td bgcolor="#99CCFF" ><input type=text maxlength=1 size=1 [(ngModel)]="game.shot5a" name="shot5a"> <input type=text maxlength=1 size=1 [(ngModel)]="game.shot5b" name="shot5b"></td>
+    <td bgcolor="#99CCFF" ><input type=text maxlength=1 size=1 [(ngModel)]="game.shot6a" name="shot6a"> <input type=text maxlength=1 size=1 [(ngModel)]="game.shot6b" name="shot6b"></td>
+    <td bgcolor="#99CCFF" ><input type=text maxlength=1 size=1 [(ngModel)]="game.shot7a" name="shot7a"> <input type=text maxlength=1 size=1 [(ngModel)]="game.shot7b" name="shot7b"></td>
+    <td bgcolor="#99CCFF" ><input type=text maxlength=1 size=1 [(ngModel)]="game.shot8a" name="shot8a"> <input type=text maxlength=1 size=1 [(ngModel)]="game.shot8b" name="shot8b"></td>
+    <td bgcolor="#99CCFF" ><input type=text maxlength=1 size=1 [(ngModel)]="game.shot9a" name="shot9a"> <input type=text maxlength=1 size=1 [(ngModel)]="game.shot9b" name="shot9b"></td>
+    <td bgcolor="#99CCFF" ><input type=text maxlength=1 size=1 [(ngModel)]="game.shot10a" name="shot10a"> <input type=text maxlength=1 size=1 [(ngModel)]="game.shot10b" name="shot10b"> <input type=text maxlength=1 size=1 [(ngModel)]="game.shot10c" name="shot10c"></td>
+  </tr>
+</tbody>
+</table>
+</form>
+<p><input type=button value="Calculate Score" (click)="calculate()">
+<input type=reset value="Clear Form" ></p>
+
+

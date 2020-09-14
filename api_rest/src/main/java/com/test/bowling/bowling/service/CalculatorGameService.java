@@ -25,7 +25,7 @@ public class CalculatorGameService {
 			return new ResponseGenericDTO(calculateScore(),true,"OK",HttpStatus.OK);
 		} catch (Exception e) {
 			logger.error("getScored ERROR: " + e.getMessage());
-			return new ResponseGenericDTO(0000,false,e.getMessage(),HttpStatus.INTERNAL_SERVER_ERROR);
+			return new ResponseGenericDTO(-0,false,e.getMessage(),HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}
 	
