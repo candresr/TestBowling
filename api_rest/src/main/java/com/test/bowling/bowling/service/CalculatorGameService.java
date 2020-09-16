@@ -11,8 +11,6 @@ import com.test.bowling.bowling.dto.ResponseGenericDTO;
 public class CalculatorGameService {
 	
 	final Logger logger = Logger.getLogger(this.getClass());
-    private int roll = 0;
-    private int[] rolls = new int[21];
 	
 	public ResponseGenericDTO getScored(RequestCalculatorDTO dto) {
 		
@@ -29,16 +27,35 @@ public class CalculatorGameService {
     public int calculateScore(String[] points) {
         int total = 0;
         int inc = 0;
+        int roll = 0;
+        int[] rolls = new int[21];
 
-		for(String pin : points) {
-			converGame(pin);
+		for(String game : points) {
+			for (int i=0; i<game.length(); i++) {
+				switch (game.charAt(i)) {
+				case 'X':
+					rolls[roll++] = 10;
+					break;
+				case '/':
+					rolls[roll++] = 10;
+					break;
+				case '-':
+					rolls[roll--] = 1;
+					break;
+				default:
+	                int x = game.charAt(i);
+	                rolls[roll++] = x - '0';
+	                break;
+				}
+			}
 		}
+		
 
         for (int j = 0; j < 10; j++) {
-            if (calculateStrike(inc)) { 
+            if (rolls[inc] == 10) { 
             	total += 10 + rolls[inc+1] + rolls[inc+2];
             	inc ++;
-            } else if (calculateSpare(inc)) { 
+            } else if (rolls[inc] + rolls[inc+1] == 10) { 
             	total += 10 + rolls[inc+2];
             	inc += 2;
             } else {
@@ -48,35 +65,5 @@ public class CalculatorGameService {
         }
         return total;
     }
-    
-	public void converGame(String game) {
-
-		for (int i=0; i<game.length(); i++) {
-			switch (game.charAt(i)) {
-			case 'X':
-				rolls[roll++] = 10;
-				break;
-			case '/':
-				rolls[roll++] = 10;
-				break;
-			case '-':
-				rolls[roll--] = 1;
-				break;
-			default:
-                int x = game.charAt(i);
-                rolls[roll++] = x - '0';
-                break;
-			}
-		}
-	}
-    
-    private boolean calculateStrike(int inc) {
-        return rolls[inc] == 10;
-    }
-
-    private boolean calculateSpare(int inc) {
-        return rolls[inc] + rolls[inc+1] == 10;
-    }
-	
-	
+    	
 }
